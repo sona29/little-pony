@@ -1,7 +1,8 @@
 {
-  "name": "little-pony",
+  "name": "mern-shopping",
+  "homepage": "http://sona29.github.io/little-pony",
+  
   "version": "1.0.0",
-  "homepage": "https://sona29.github.io/little-pony",
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -18,11 +19,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "eslint": "^7.12.1",
-    "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2"
+    "gh-pages": "^3.2.3"
   },
   "dependencies": {
-    "gh-pages": "^3.2.3"
+    "graphql": "^15.5.1"
   }
 }
