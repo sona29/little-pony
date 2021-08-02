@@ -17,7 +17,7 @@ function DashBoard() {
 
   const categories = useQuery(QUERY_CATEGORIES);
 
-  console.log(categories.data);
+  console.log(categories);
 
   return (
     <>
@@ -61,6 +61,17 @@ function DashBoard() {
                   <option>Used (fair)</option>
                 </select>
               </div>
+
+              {categories.data && (
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlSelect2">Category</label>
+                  <select className="form-control" id="product-condition">
+                    {categories.data.categories.map((category) => (
+                      <option key={category._id}>{category.name}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               <div className="form-group">
                 <label htmlFor="exampleFormControlTextarea1">
