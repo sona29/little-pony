@@ -7,7 +7,6 @@ import {
 } from "../../utils/actions";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-import baby from "../../assets/baby1.jpg";
 
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
