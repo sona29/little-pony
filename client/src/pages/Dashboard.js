@@ -24,9 +24,12 @@ function DashBoard() {
 
   const categories = useQuery(QUERY_CATEGORIES);
 
+  //for form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    console.log(user);
+
     const mutationResponse = await addProduct({
       variables: {
         name: formState.name,
@@ -43,6 +46,7 @@ function DashBoard() {
   };
 
   const handleChange = (event) => {
+    console.log(formState);
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -112,7 +116,7 @@ function DashBoard() {
                     onChange={handleChange}
                   >
                     {categories.data.categories.map((category) => (
-                      <option key={category._id}>{category.name}</option>
+                      <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                   </select>
                 </div>
