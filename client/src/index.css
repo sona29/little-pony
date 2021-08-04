@@ -208,3 +208,8 @@ input:focus {
     width: 100%;
   }
 }
+
+.carousel img {
+  max-height: 50vh;
+  margin: 0 auto;
+}
