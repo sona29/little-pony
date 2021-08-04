@@ -14,6 +14,7 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
+import Slider from "./components/Slider";
 import { StoreProvider } from "./utils/GlobalState";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
@@ -45,6 +46,7 @@ function App() {
         <div className="container-fluid p-0">
           <StoreProvider>
             <Nav />
+            <Slider />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
