@@ -2,8 +2,30 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Product, Category, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+const { GraphQLUpload } = require("graphql-upload");
+
+const fs = require("fs");
+const path = require("path");
+const { v4: uuid } = require("uuid");
+
+const processUpload = async (file) => {
+  let { createReadStream, filename } = await file;
+  const stream = createReadStream();
+  filename = uuid() + filename;
+  const out = fs.createWriteStream(
+    path.join(__dirname, "../../client/public/images/" + filename)
+  );
+
+  return new Promise((resolve) => {
+    stream.pipe(out);
+    out.on("finish", function () {
+      resolve(filename);
+    });
+  });
+};
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     categories: async () => {
       return await Category.find();
@@ -90,6 +112,10 @@ const resolvers = {
     },
   },
   Mutation: {
+    upload: async (_, { file }) => {
+      const filename = await processUpload(file);
+      return { filename };
+    },
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -112,7 +138,6 @@ const resolvers = {
     },
     //adding new product
     addProduct: async (parent, args, context) => {
-  
       if (context.user) {
         args.user_id = context.user._id;
         return Product.create(args);
