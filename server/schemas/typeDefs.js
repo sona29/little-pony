@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  scalar Upload
   type Category {
     _id: ID
     name: String
@@ -42,6 +43,9 @@ const typeDefs = gql`
     user: User
   }
 
+  type File {
+    filename: String!
+  }
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -52,6 +56,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    upload(file: Upload!): File!
     addUser(
       firstName: String!
       lastName: String!
@@ -78,7 +83,7 @@ const typeDefs = gql`
     ): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
-    uploadImage(filename: String!) : String!
+    uploadImage(filename: String!): String!
   }
 `;
 
