@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
@@ -33,8 +33,8 @@ function Login(props) {
     <div className="container my-1">
       <Link to="/signup">← Go to Signup</Link>
 
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
+      <h2>Welcome Back</h2>
+      <form onSubmit={handleFormSubmit} className="border-blue my-1">
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
           <input
@@ -42,7 +42,9 @@ function Login(props) {
             name="email"
             type="email"
             id="email"
+            className="form-control"
             onChange={handleChange}
+            required
           />
         </div>
         <div className="flex-row space-between my-2">
@@ -53,6 +55,8 @@ function Login(props) {
             type="password"
             id="pwd"
             onChange={handleChange}
+            className="form-control"
+            required
           />
         </div>
         {error ? (
@@ -61,7 +65,7 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <button type="submit">Sign In</button>
         </div>
       </form>
     </div>
