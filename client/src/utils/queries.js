@@ -12,6 +12,9 @@ export const QUERY_PRODUCTS = gql`
       category {
         _id
       }
+      color
+      size
+      condition
     }
   }
 `;
