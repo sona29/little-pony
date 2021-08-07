@@ -1,5 +1,5 @@
 {
-  "name": "mern-shopping",
+  "name": "little-pony",
   "homepage": "http://sona29.github.io/little-pony",
   "version": "1.0.0",
   "description": "",
@@ -21,6 +21,7 @@
     "gh-pages": "^3.2.3"
   },
   "dependencies": {
+    "apollo-upload-client": "^16.0.0",
     "aws-sdk": "^2.959.0",
     "graphql": "^15.5.1"
   }
