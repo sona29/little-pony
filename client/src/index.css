@@ -2,7 +2,7 @@
 
 :root {
   --primary: #232f3e;
-  --secondary: #779ecb;
+  --secondary: #b1a0d2;
   --tertiary: #b12704;
   --light: #fafafa;
   --dark: #272f32;
@@ -87,6 +87,12 @@ header {
 /* header a {
   color: var(--light);
 } */
+
+.border-blue {
+  border: 2px solid var(--secondary);
+  padding: 20px;
+  border-radius: 25px;
+}
 
 button {
   font-size: 1rem;
@@ -210,7 +216,7 @@ input:focus {
 }
 
 .testimonial {
-  background-color: #e5dff7;
+  background-color: #f8efdc;
 }
 
 .testimonial p {
@@ -239,6 +245,14 @@ input:focus {
   transform: scale(
     1.1
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.social-media {
+  background-color: #f8efdc;
+}
+
+.media-icons {
+  font-size: x-large;
 }
 
 @media screen and (max-width: 768px) {
