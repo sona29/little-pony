@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+
+.logo {
+  border-radius: 50%;
+  font-family: "Josefin Sans", cursive;
+}
+
+.access a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  font-weight: normal;
+}
+
+.web-name,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
+
+.menu-position {
+  float: right;
+}
