@@ -27,7 +27,7 @@ function Footer() {
         </div>
       </section>
 
-      <div className="text-center p-4">© 2021 Copyright: Sona Shrestha</div>
+      <div className="text-center p-4">© 2021 Copyright: Little Pony</div>
     </footer>
   );
 }
