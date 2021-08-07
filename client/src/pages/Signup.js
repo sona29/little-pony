@@ -44,7 +44,7 @@ function Signup(props) {
               name="firstName"
               type="firstName"
               id="firstName"
-              className="form-control required"
+              className="form-control"
               onChange={handleChange}
               required
             />
