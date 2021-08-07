@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import { UPLOAD_FILE } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { ADD_PRODUCT } from "../utils/mutations";
 
@@ -11,6 +12,24 @@ import { QUERY_USER } from "../utils/queries";
 import { GraphQLUpload } from "graphql-upload";
 
 function DashBoard() {
+  const [upload] = useMutation(UPLOAD_FILE);
+  // const { data: uploadData } = await upload({ variables: { file } });
+
+  const onChange = ({
+    target: {
+      validity,
+      files: [file],
+    },
+  }) => {
+    if (!validity.valid) {
+      alert("Invalid file");
+      return;
+    }
+    // upload({ variables: { file } });
+    setFile(file);
+  };
+  const [file, setFile] = useState();
+
   const [formState, setFormState] = useState();
   const [addProduct] = useMutation(ADD_PRODUCT);
   const { data } = useQuery(QUERY_USER);
@@ -30,6 +49,12 @@ function DashBoard() {
     console.log(formState);
     console.log(user);
 
+    let image;
+    if (file) {
+      const { data } = await upload({ variables: { file } });
+      image = data.upload.filename;
+    }
+    console.log(image);
     const mutationResponse = await addProduct({
       variables: {
         name: formState.name,
@@ -40,7 +65,7 @@ function DashBoard() {
         quantity: parseInt(formState.quantity),
         category: formState.category,
         condition: formState.condition,
-        image: "",
+        image: image,
       },
     });
   };
@@ -53,6 +78,8 @@ function DashBoard() {
       [name]: value,
     });
   };
+
+  console.log(data);
 
   return (
     <>
@@ -116,7 +143,9 @@ function DashBoard() {
                     onChange={handleChange}
                   >
                     {categories.data.categories.map((category) => (
-                      <option key={category._id} value={category._id}>{category.name}</option>
+                      <option key={category._id} value={category._id}>
+                        {category.name}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -182,12 +211,14 @@ function DashBoard() {
 
               <div className="form-group">
                 <label htmlFor="exampleFormControlFile1">Upload Picture</label>
-                <input
-                  type="file"
-                  className="form-control-file"
-                  id="exampleFormControlFile1"
-                  onChange={handleChange}
-                ></input>
+                <input type="file" onChange={onChange} />
+                {/* {data && (
+                  <img
+                    style={{ maxWidth: "100%" }}
+                    src={data.upload.filename}
+                    alt=""
+                  />
+                )} */}
               </div>
 
               <button type="submit" className="btn btn-primary">
