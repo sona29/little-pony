@@ -5,8 +5,7 @@ function Testimonial() {
     <div className="container mt-5">
       <div className="row">
         <div class="col-md-4">
-          <div class="testimonial p-3 bg-dark text-center rounded">
-            <img alt="" src="https://i.imgur.com/lU2pDQv.png" width="40" />
+          <div class="testimonial p-3 text-center rounded">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -22,8 +21,7 @@ function Testimonial() {
         </div>
 
         <div className="col-md-4">
-          <div className="testimonial p-3 bg-dark text-center rounded">
-            <img src="https://i.imgur.com/lU2pDQv.png" width="40" alt="" />
+          <div className="testimonial p-3 text-center rounded">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -39,8 +37,7 @@ function Testimonial() {
         </div>
 
         <div className="col-md-4">
-          <div className="testimonial p-3 bg-dark text-center rounded">
-            <img src="https://i.imgur.com/lU2pDQv.png" width="40" alt="" />
+          <div className="testimonial p-3 text-center rounded">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
