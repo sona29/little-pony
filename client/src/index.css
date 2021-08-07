@@ -2,7 +2,7 @@
 
 :root {
   --primary: #232f3e;
-  --secondary: #b867a8;
+  --secondary: #779ecb;
   --tertiary: #b12704;
   --light: #fafafa;
   --dark: #272f32;
@@ -72,9 +72,8 @@ p {
 }
 
 a {
-  color: var(--dark);
+  color: var(--dark) !important;
   text-decoration: none !important;
-  font-weight: bold;
 }
 
 a:hover {
@@ -206,19 +205,23 @@ input:focus {
 }
 
 .carousel img {
-  max-height: 50vh;
+  max-height: 80vh;
   margin: 0 auto;
 }
 
+.testimonial {
+  background-color: #e5dff7;
+}
+
 .testimonial p {
-  color: #fff;
+  color: black;
   line-height: 19px;
   font-size: 13px;
   margin-top: 16px;
 }
 
 .testimonial h5 {
-  color: #9c27b0;
+  color: black;
   text-transform: uppercase;
   font-size: 15px;
   margin-top: 8px;
@@ -226,6 +229,10 @@ input:focus {
 
 .zoom {
   transition: transform 0.2s;
+}
+
+.about-image {
+  width: 25%;
 }
 
 .zoom:hover {
