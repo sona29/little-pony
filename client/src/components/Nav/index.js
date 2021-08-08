@@ -50,7 +50,7 @@ function Nav() {
         <span className="web-name">Little Pony</span>
       </Link>
 
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <button
           className="navbar-toggler"
           type="button"
