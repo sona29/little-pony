@@ -259,4 +259,17 @@ input:focus {
   .card {
     width: 100%;
   }
+
+  .cart-closed {
+    position: fixed !important;
+  }
+
+  .cart {
+    position: fixed !important;
+    background-color: #f8efdc !important;
+  }
+
+  .web-name {
+    display: none;
+  }
 }
