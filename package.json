@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
-
   "engines": {
     "node": "14.16.1",
     "npm": "6.14.12"
