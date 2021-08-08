@@ -8,12 +8,12 @@ import { ADD_PRODUCT } from "../utils/mutations";
 import { useQuery } from "@apollo/client";
 import { QUERY_CATEGORIES } from "../utils/queries";
 import { QUERY_USER } from "../utils/queries";
+import { QUERY_ALL_PRODUCTS } from "../utils/queries";
 
 import { GraphQLUpload } from "graphql-upload";
 
 function DashBoard() {
   const [upload] = useMutation(UPLOAD_FILE);
-  // const { data: uploadData } = await upload({ variables: { file } });
 
   const onChange = ({
     target: {
@@ -31,7 +31,28 @@ function DashBoard() {
   const [file, setFile] = useState();
 
   const [formState, setFormState] = useState();
-  const [addProduct] = useMutation(ADD_PRODUCT);
+  // const [addProduct] = useMutation(ADD_PRODUCT);
+
+  const [addProduct, { error }] = useMutation(ADD_PRODUCT, {
+    // The update method allows us to access and update the local cache
+    update(cache, { data: { addProduct } }) {
+      try {
+        // First we retrieve existing product data that is stored in the cache under the `QUERY_ALL_PRODUCTS` query
+        // Could potentially not exist yet, so wrap in a try/catch
+        const { products } = cache.readQuery({ query: QUERY_ALL_PRODUCTS });
+
+        // Then we update the cache by combining existing proDUCT data with the newly created data returned from the mutation
+        cache.writeQuery({
+          query: QUERY_ALL_PRODUCTS,
+          // If we want new data to show up before or after existing data, adjust the order of this array
+          data: { products: [...products, addProduct] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
   const { data } = useQuery(QUERY_USER);
 
   let user;
@@ -46,15 +67,13 @@ function DashBoard() {
   //for form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-    console.log(user);
 
     let image;
     if (file) {
       const { data } = await upload({ variables: { file } });
       image = data.upload.filename;
     }
-    console.log(image);
+
     const mutationResponse = await addProduct({
       variables: {
         name: formState.name,
@@ -84,7 +103,7 @@ function DashBoard() {
   return (
     <>
       <div className="container my-1">
-        <div class="align-items-center">
+        <div className="align-items-center">
           <Link to="/">← Back to Products</Link>
 
           {user ? (
