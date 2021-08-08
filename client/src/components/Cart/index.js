@@ -1,24 +1,25 @@
-import React, { useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import CartItem from '../CartItem';
-import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
-import './style.css';
+import React, { useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { useLazyQuery } from "@apollo/client";
+import { QUERY_CHECKOUT } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
+import CartItem from "../CartItem";
+import Auth from "../../utils/auth";
+import { useStoreContext } from "../../utils/GlobalState";
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
+import { AiOutlineShopping } from "react-icons/ai";
 
-// TODO: Add a comment describing the functionality of loadStripe
-// Your comment here
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+import "./style.css";
+
+// stripePromise returns a promise with the stripe object as soon as the Stripe package loads
+const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-  // TODO: Add a comment describing the functionality of the useEffect hook in this instance
-  // Your comment here
+  // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
+  // Then we should redirect to the checkout with a reference to our session id
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -27,11 +28,11 @@ const Cart = () => {
     }
   }, [data]);
 
-  // TODO: Add a comment describing what data we are watching and what work should be preformed if that data changes
-  // Your comment here
+  // If the cart's length or if the dispatch function is updated, check to see if the cart is empty.
+  // If so, invoke the getCart method and populate the cart with the existing from the session
   useEffect(() => {
     async function getCart() {
-      const cart = await idbPromise('cart', 'get');
+      const cart = await idbPromise("cart", "get");
       dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
     }
 
@@ -52,8 +53,8 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  // TODO: Add a comment describing the functionality of our submitCheckout function.
-  // Your comment here
+  // When the submit checkout method is invoked, loop through each item in the cart
+  // Add each item id to the productIds array and then invoke the getCheckout query passing an object containing the id for all our products
   function submitCheckout() {
     const productIds = [];
 
@@ -72,7 +73,7 @@ const Cart = () => {
     return (
       <div className="cart-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
-          🛒
+          <AiOutlineShopping />
         </span>
       </div>
     );
@@ -101,12 +102,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
-          You haven't added anything to your cart yet!
-        </h3>
+        <h3>You haven't added anything to your cart yet!</h3>
       )}
     </div>
   );
