@@ -39,8 +39,8 @@ function DashBoard() {
       try {
         // First we retrieve existing product data that is stored in the cache under the `QUERY_ALL_PRODUCTS` query
         // Could potentially not exist yet, so wrap in a try/catch
-        const { products } = cache.readQuery({ query: QUERY_ALL_PRODUCTS });
-
+        const products = cache.readQuery({ query: QUERY_ALL_PRODUCTS });
+        console.log(products);
         // Then we update the cache by combining existing proDUCT data with the newly created data returned from the mutation
         cache.writeQuery({
           query: QUERY_ALL_PRODUCTS,
@@ -87,6 +87,8 @@ function DashBoard() {
         image: image,
       },
     });
+
+    window.location.href = "/";
   };
 
   const handleChange = (event) => {
