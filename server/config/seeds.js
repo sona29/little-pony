@@ -1,4 +1,5 @@
 const db = require("./connection");
+const { ObjectID } = require("mongodb");
 const { User, Product, Category } = require("../models");
 
 db.once("open", async () => {
@@ -14,6 +15,34 @@ db.once("open", async () => {
 
   console.log("categories seeded");
 
+  await User.deleteMany();
+
+  const users = await User.insertMany([
+    {
+      firstName: "Pamela",
+      lastName: "Washington",
+      email: "pamela@testmail.com",
+      password: "password12345",
+    },
+    {
+      firstName: "Elijah",
+      lastName: "Holt",
+      email: "eholt@testmail.com",
+      password: "password12345",
+    },
+  ]);
+
+  console.log(users[0]._id);
+
+  // await User.create({
+  //   firstName: "Elijah",
+  //   lastName: "Holt",
+  //   email: "eholt@testmail.com",
+  //   password: "password12345",
+  // });
+
+  console.log("users seeded");
+
   await Product.deleteMany();
 
   const products = await Product.insertMany([
@@ -27,6 +56,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 20.93,
       quantity: 500,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Baby Blue Long-sleeve Romper",
@@ -38,6 +68,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 5.4,
       quantity: 500,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Girl Rainbow Print Top and Unicorn Pants Set",
@@ -49,6 +80,7 @@ db.once("open", async () => {
       image: "toddler-pink.JPG",
       price: 20.22,
       quantity: 20,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Boy Dinosaur Print Long-sleeve Tee",
@@ -60,6 +92,7 @@ db.once("open", async () => {
       image: "toddler-tee.JPG",
       price: 10.5,
       quantity: 50,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Boy Adorable Dino Decor Warm Knitwear",
@@ -71,6 +104,7 @@ db.once("open", async () => {
       image: "toddler-sweater.JPG",
       price: 20,
       quantity: 100,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Yellow Dress",
@@ -82,6 +116,7 @@ db.once("open", async () => {
       color: "yellow",
       price: 22,
       quantity: 30,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Pretty Kid Girl Denim Bowknot Stars and Stripes Sleeveless Dress",
@@ -93,6 +128,7 @@ db.once("open", async () => {
       image: "kid-denim.JPG",
       price: 19.99,
       quantity: 30,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Pretty Kid Girl Floral Print Mesh Sleeveless Dress",
@@ -104,6 +140,7 @@ db.once("open", async () => {
       image: "kid-yellow.JPG",
       price: 9.99,
       quantity: 100,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Trendy Kid Boy Colorblock Zipper Hooded Polar Fleece Jacke",
@@ -115,6 +152,7 @@ db.once("open", async () => {
       image: "kid-jacket.JPG",
       price: 20,
       quantity: 1000,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Casual Colorblock Plaid Shirts for Kids",
@@ -126,6 +164,7 @@ db.once("open", async () => {
       image: "kid-shirt.JPG",
       price: 12.99,
       quantity: 1000,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Elegant Sequined Velcro Big Bowknot Decor Flats Shoes",
@@ -137,6 +176,7 @@ db.once("open", async () => {
       image: "shoe-pink.JPG",
       price: 17.99,
       quantity: 100,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Elegant Sequined Velcro Big Bowknot Decor Flats Shoes",
@@ -148,6 +188,7 @@ db.once("open", async () => {
       image: "shoe-pink.JPG",
       price: 17.99,
       quantity: 100,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Kid Solid Bow Decor Shoes",
@@ -160,6 +201,7 @@ db.once("open", async () => {
       image: "shoe-black.JPG",
       price: 19.99,
       quantity: 600,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Lightning Print LED Sport Shoes",
@@ -172,6 +214,7 @@ db.once("open", async () => {
       image: "shoe-black.JPG",
       price: 19.99,
       quantity: 600,
+      user_id: "610fbbf58daa7b0015d20691",
     },
     {
       name: "Toddler Girl's Bowknot Solid Headband",
@@ -184,33 +227,11 @@ db.once("open", async () => {
       image: "girl-bow.JPG",
       price: 19.99,
       quantity: 600,
+      user_id: "610fbbf58daa7b0015d20691",
     },
   ]);
 
   console.log("products seeded");
-
-  await User.deleteMany();
-
-  await User.create({
-    firstName: "Pamela",
-    lastName: "Washington",
-    email: "pamela@testmail.com",
-    password: "password12345",
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id],
-      },
-    ],
-  });
-
-  await User.create({
-    firstName: "Elijah",
-    lastName: "Holt",
-    email: "eholt@testmail.com",
-    password: "password12345",
-  });
-
-  console.log("users seeded");
 
   process.exit();
 });
