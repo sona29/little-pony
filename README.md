@@ -42,7 +42,7 @@ The user can do the following:
 
 - Clone repository.
 - `npm install`
-- `node server.js`
+- `npn run develop`
 - `npm run seed` - to get seed datas.
 
 ## Usage
