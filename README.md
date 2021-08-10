@@ -12,29 +12,31 @@
 
 ## Description
 
-The workout tracker creates and track daily workouts. It enables to log multiple exercises in a workout on a given day. It tracks the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, it tracks distance traveled.
+Little Pony is an ecommerce website for buying and selling used baby clothes and accessories.
 
 The user can do the following:
 
-- Add exercises to the most recent workout plan.
+- Buy products
 
-- Add new exercises to a new workout plan.
+- Add products for selling
 
-- View the combined weight of multiple exercises from the past seven workouts on the stats page.
-
-- View the total duration of each workout from the past seven workouts on the stats page.
+- Payment is done via Stripe
 
 ## Mock up
 
-- The following image shows the tracker's functionality
+- The following image shows the website in different devices
 
-## Home Page
+## Desktop
 
-![alt text](images/home-page.png)
+![alt text](client/src/assets/desktop.png)
 
-## Stats Page
+## Iphone X
 
-![alt text](images/stats.png)
+![alt text](client/src/assets/iphone.png)
+
+## Ipad Pro
+
+![alt text](client/src/assets/ipad.png)
 
 ## Installation
 
@@ -45,7 +47,7 @@ The user can do the following:
 
 ## Usage
 
-A demo of the application is available [here](https://powerful-escarpment-03587.herokuapp.com/)
+The application is available [here](http://fierce-basin-74798.herokuapp.com/)
 
 ## Contribution
 
