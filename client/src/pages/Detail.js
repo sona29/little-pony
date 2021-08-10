@@ -98,7 +98,7 @@ function Detail() {
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <h2>{currentProduct.name}</h2>
 
-              <p>Description{currentProduct.description}</p>
+              <p>Description: {currentProduct.description}</p>
               <p>Product size: {currentProduct.size}</p>
               <p>Product Condition: {currentProduct.condition}</p>
               <p>Product Color: {currentProduct.color}</p>
