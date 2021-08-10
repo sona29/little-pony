@@ -7,9 +7,9 @@ function Testimonial() {
         <div className="col-md-4">
           <div className="testimonial p-3 text-center rounded">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              I am in love with Little Pony. It is so easy to sell my baby's
+              unused clothes. Some of the clothes are barely even used. My
+              little angel is growing so quickly.
             </p>
             <img
               className="rounded-circle"
@@ -23,9 +23,9 @@ function Testimonial() {
         <div className="col-md-4">
           <div className="testimonial p-3 text-center rounded">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              I am in love with Little Pony. It is so easy to sell my baby's
+              unused clothes. Some of the clothes are barely even used. My
+              little angel is growing so quickly.
             </p>
             <img
               className="rounded-circle"
@@ -39,9 +39,9 @@ function Testimonial() {
         <div className="col-md-4">
           <div className="testimonial p-3 text-center rounded">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              I am in love with Little Pony. It is so easy to sell my baby's
+              unused clothes. Some of the clothes are barely even used. My
+              little angel is growing so quickly.
             </p>
             <img
               className="rounded-circle"
