@@ -34,7 +34,7 @@ function Slider() {
         </div> */}
       </div>
 
-      <a
+      {/* <a
         className="carousel-control-prev"
         href="#carouselExampleIndicators"
         role="button"
@@ -51,7 +51,7 @@ function Slider() {
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="sr-only">Next</span>
-      </a>
+      </a> */}
     </div>
   );
 }
